@@ -1,0 +1,104 @@
+.chat{
+    flex:.7;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.header{
+    padding: 13px 20px ;
+
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+
+}
+
+.header_info{
+    flex: 1;
+    padding-left: 20px;
+}
+.header_info h3 {
+    margin-bottom: 3px;
+    font-weight: 500;
+}
+
+.header_right{
+    display: flex;
+    justify-content: space-between;
+    min-width: 100px;
+}
+.body{
+    flex: 1;
+    margin:0;
+    overflow:hidden;
+    background-image: url('../assets/back.svg');
+    overflow: scroll;
+    padding: 30px 17px;
+
+}
+
+.body::-webkit-scrollbar{
+    display: none;
+}
+
+.message{
+    position: relative;
+    font-size: 16px;
+    padding: 7px 13px 7px 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    width: fit-content;
+    margin-bottom: 10px;
+}
+.name {
+    font-size: 14px;
+    color: #0088cc;
+    font-weight: 700;
+}
+
+.time{
+    margin-left:  10px;
+    font-size: xx-small;
+    color: #0088cc;
+    font-weight: 700;
+}
+
+.reciever{
+    margin-left: auto;
+    background-color: #c9ffa6;
+}
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    border-top: 1px solid lightgray ;
+}
+
+.footer form{
+    flex:1;
+    display: flex;
+    align-items: center;
+}
+
+.footer  input{
+    flex: 1;
+    padding: 10px;
+    border:none;
+    border-radius: 30px;
+    outline: none;
+}
+.footer .MuiSvgIcon-root {
+    padding: 10px;
+}
+
+.footer button{
+    border: none;
+
+}
+.footer button > .MuiSvgIcon-root{
+    color: lightsalmon;
+    padding: 10px;
+
+}
