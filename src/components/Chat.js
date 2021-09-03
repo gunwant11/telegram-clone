@@ -30,22 +30,7 @@ const Chat = () => {
     setSeed(Math.floor(Math.random() * 5000));
   }, [channelId]);
 
-  //   const unsub = onSnapshot(doc(db, "cities", "SF"), (doc) => {
-  //     console.log("Current data: ", doc.data());
-  // });
-  var currentdate = new Date();
-  var datetime =
-    +currentdate.getDate() +
-    "/" +
-    (currentdate.getMonth() + 1) +
-    "/" +
-    currentdate.getFullYear() +
-    "  " +
-    currentdate.getHours() +
-    ":" +
-    currentdate.getMinutes() +
-    ":" +
-    currentdate.getSeconds();
+
 
   useEffect(() => {
     if (channelId) {
@@ -84,8 +69,7 @@ const Chat = () => {
         <div className={classes.header_info}>
           <h3>{channelName}</h3>
           <p>
-            Last seen at
-            {messages[messages.length - 1]?.timestamp?.toDate().toString().slice(0, 24)}
+            Last seen at {messages[messages.length - 1]?.timestamp?.toDate().toString().slice(0, 24)}
           </p>
         </div>
         <div className={classes.header_right}>
@@ -102,19 +86,18 @@ const Chat = () => {
       </div>
       <div className={classes.body}>
         {messages.map((message) => (
-          <Fragment>
-            <p
+            <div
+              key={message.name+message.message+(Math.floor(Math.random() * 5000))}
               className={`${classes.message} ${
                 message.name === user.displayName && classes.reciever
               }`}
             >
-              <span className={classes.name}>{message.name}</span>
+              <span className={classes.name}>{message.id}{message.name}</span>
               <p>
                 {message.message}
                 <span className={classes.time}>{message.timestamp.toDate().toString().slice(0, 24) }</span>
               </p>
-            </p>
-          </Fragment>
+            </div>
         ))}
       </div>
       <div className={classes.footer}>
@@ -135,7 +118,7 @@ const Chat = () => {
           </IconButton>
 
           <div>
-            <button type="submit" onClick={sendMessage}>
+            <div type="submit" onClick={sendMessage}>
               {!input ? (
                 <IconButton>
                   <MicNoneIcon />
@@ -145,7 +128,7 @@ const Chat = () => {
                   <Send />
                 </IconButton>
               )}
-            </button>
+            </div>
           </div>
         </form>
       </div>
