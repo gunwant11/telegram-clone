@@ -15,7 +15,7 @@ import { query, orderBy } from "firebase/firestore";
 import { useStateValue } from "../StateProvider";
 import { Timestamp } from "firebase/firestore";
 
-console.log(Timestamp.now().toDate())
+console.log(Timestamp.now().toDate());
 
 const Chat = () => {
   const [seed, setSeed] = useState("");
@@ -29,8 +29,6 @@ const Chat = () => {
   useEffect(() => {
     setSeed(Math.floor(Math.random() * 5000));
   }, [channelId]);
-
-
 
   useEffect(() => {
     if (channelId) {
@@ -69,7 +67,11 @@ const Chat = () => {
         <div className={classes.header_info}>
           <h3>{channelName}</h3>
           <p>
-            Last seen at {messages[messages.length - 1]?.timestamp?.toDate().toString().slice(0, 24)}
+            Last seen at{" "}
+            {messages[messages.length - 1]?.timestamp
+              ?.toDate()
+              .toString()
+              .slice(0, 24)}
           </p>
         </div>
         <div className={classes.header_right}>
@@ -86,18 +88,25 @@ const Chat = () => {
       </div>
       <div className={classes.body}>
         {messages.map((message) => (
-            <div
-              key={message.name+message.message+(Math.floor(Math.random() * 5000))}
-              className={`${classes.message} ${
-                message.name === user.displayName && classes.reciever
-              }`}
-            >
-              <span className={classes.name}>{message.id}{message.name}</span>
-              <p>
-                {message.message}
-                <span className={classes.time}>{message.timestamp.toDate().toString().slice(0, 24) }</span>
-              </p>
-            </div>
+          <div
+            key={
+              message.name + message.message + Math.floor(Math.random() * 5000)
+            }
+            className={`${classes.message} ${
+              message.name === user.displayName && classes.reciever
+            }`}
+          >
+            <span className={classes.name}>
+              {message.id}
+              {message.name}
+            </span>
+            <p>
+              {message.message}
+              <span className={classes.time}>
+                {message.timestamp.toDate().toString().slice(0, 24)}
+              </span>
+            </p>
+          </div>
         ))}
       </div>
       <div className={classes.footer}>
@@ -118,17 +127,9 @@ const Chat = () => {
           </IconButton>
 
           <div>
-            <div type="submit" onClick={sendMessage}>
-              {!input ? (
-                <IconButton>
-                  <MicNoneIcon />
-                </IconButton>
-              ) : (
-                <IconButton>
-                  <Send />
-                </IconButton>
-              )}
-            </div>
+            <button type="submit" onClick={sendMessage}>
+              {!input ? <MicNoneIcon /> : <Send />}
+            </button>
           </div>
         </form>
       </div>
