@@ -1,9 +1,9 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+import { initializeApp } from 'firebase/app';
+import { getAuth } from "@firebase/auth";
+import { getFirestore } from "firebase/firestore"
+import { GoogleAuthProvider } from "firebase/auth";
+
 const firebaseConfig = {
   apiKey: "AIzaSyBwN-3HZ9BCVGEMv2wW1eue_1gCZJPtyhE",
   authDomain: "telegram-clone-b6ac4.firebaseapp.com",
@@ -13,5 +13,21 @@ const firebaseConfig = {
   appId: "1:907632229993:web:808bdf8da5d8936e31ecf8"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getFirestore(firebaseApp);
+const auth = getAuth();
+const provider = new GoogleAuthProvider();
+
+export { auth, provider };
+export default db;
+
+// // Initialize Firebase
+// const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+// const db = firestore(firebaseApp);
+// const auth = auth();
+// // const provider = new auth.GoogleAuthProvider();
+
+// export {  auth  };
+// export default db;

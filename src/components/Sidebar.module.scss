@@ -28,6 +28,8 @@
     height: 100%;
     outline: none;
     display: block;
+    font-size: 16px;
+    padding-left: 10px ;
 }
 .search > .MuiSvgIcon-root {
     color: gray;
@@ -45,3 +47,4 @@
     width: 0;  /* Remove scrollbar space */
     background: transparent;  /* Optional: just make scrollbar invisible */
 }
+
