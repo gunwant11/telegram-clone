@@ -47,12 +47,17 @@ const Chat = () => {
 
   const sendMessage = (e) => {
     e.preventDefault();
-    setInput("");
+    if(input.trim.length === 0){
+      setInput("");
+      return;
+    }
+    
     addDoc(collection(db, "Channel", `${channelId}`, "messages"), {
       name: user.displayName,
       message: input,
       timestamp: Timestamp.now().toDate(),
     });
+    setInput("");
   };
 
   console.log(messages);
@@ -127,7 +132,7 @@ const Chat = () => {
           </IconButton>
 
           <div>
-            <button type="submit" onClick={sendMessage}>
+            <button type="submit" onClick={sendMessage}  >
               {!input ? <MicNoneIcon /> : <Send />}
             </button>
           </div>

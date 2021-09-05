@@ -3,9 +3,12 @@ import Chat from "./components/Chat";
 import Sidebar from "./components/Sidebar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./components/Login";
-import { useStateValue } from "./StateProvider";
+import { useStateValue } from "./StateProvider";;
+
+
 function App() {
   const [{ user }, dispatch] = useStateValue();
+
 
   return (
     <div className="app">
@@ -22,6 +25,10 @@ function App() {
               <Route path="/channels">
                 <Chat />
               </Route>
+              {/* <Route path="*">
+
+                <Chat />
+              </Route> */}
             </Switch>
           </Router>
         </div>

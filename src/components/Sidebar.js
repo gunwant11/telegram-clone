@@ -5,15 +5,17 @@ import SearchOutlinedIcon from "@material-ui/icons/SearchOutlined";
 import Thread from "./Thread";
 import { useEffect, useState } from "react";
 import db from "../firebase";
-import {  onSnapshot } from "firebase/firestore";
+import { onSnapshot } from "firebase/firestore";
 import { collection } from "firebase/firestore";
-import { useStateValue } from "../StateProvider";
+
+
 
 const Sidebar = () => {
+
+
   const [channels, setChannels] = useState([]);
-  const [{ user }, dispatch] = useStateValue();
 
-
+  
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "Channel"), (collection) => {
       setChannels(
@@ -34,9 +36,17 @@ const Sidebar = () => {
     <div className={classes.sidebar}>
       <div className={classes.header}>
         <div className={classes.menu}>
-          <IconButton>
-            <MenuIcon />
-          </IconButton>
+
+            <div>
+              <IconButton
+                aria-label="more"
+                aria-controls="long-menu"
+                aria-haspopup="true"
+              >
+                <MenuIcon />
+              </IconButton>
+              
+            </div>
         </div>
         <div className={classes.search}>
           <SearchOutlinedIcon />
@@ -46,7 +56,7 @@ const Sidebar = () => {
       <div className={classes.chats}>
         <Thread addNewChat />
         {channels.map((channel) => (
-          <Thread key={channel.id} id={channel.id} name={channel.data.name}  />
+          <Thread key={channel.id} id={channel.id} name={channel.data.name} />
         ))}
       </div>
     </div>

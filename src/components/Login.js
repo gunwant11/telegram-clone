@@ -6,6 +6,7 @@ import { useStateValue } from "../StateProvider"
 import { actionTypes } from "../reducer"
 
 
+
 const Login = () => {
 
     const [{ user }, dispatch] = useStateValue();
@@ -17,6 +18,7 @@ const Login = () => {
                 type: actionTypes.SET_USER,
                 user: result.user,
             });
+
         })
         .catch((error) => alert(error.message));
     };
