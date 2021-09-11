@@ -4,7 +4,6 @@ import { useState, useEffect, Fragment } from "react";
 import SearchOutlined from "@material-ui/icons/SearchOutlined";
 import { MoreVert } from "@material-ui/icons";
 import InsertLinkIcon from "@material-ui/icons/InsertLink";
-import MicNoneIcon from "@material-ui/icons/MicNone";
 import SentimentSatisfiedOutlinedIcon from "@material-ui/icons/SentimentSatisfiedOutlined";
 import AttachmentOutlinedIcon from "@material-ui/icons/AttachmentOutlined";
 import Send from "@material-ui/icons/Send";
@@ -137,7 +136,7 @@ const Chat = () => {
 
           <div>
             <button type="submit" onClick={sendMessage}  >
-              {!input ? <MicNoneIcon /> : <Send />}
+               <Send />
             </button>
           </div>
         </form>
