@@ -47,12 +47,7 @@ const Chat = () => {
   const sendMessage = (e) => {
     e.preventDefault();
     if(!input){
-      return
-    }
-
-    if(input.trim.length === 0){
-      setInput("");
-      return;
+      return ;
     }
     
     addDoc(collection(db, "Channel", `${channelId}`, "messages"), {
